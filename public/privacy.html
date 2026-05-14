@@ -16,58 +16,67 @@
 </head>
 <body>
     <h1>Privacy Policy</h1>
-    <p><strong>Last updated:</strong> May 13, 2026</p>
+    <p><strong>Last updated:</strong> May 14, 2026</p>
     
     <h2>1. Information We Collect</h2>
     <p>Dashka Translator Lite collects the following information:</p>
     <ul>
-        <li><strong>Voice recordings:</strong> Temporary audio data captured through your device's microphone for speech-to-text translation. Audio is processed in real-time and is not stored on our servers.</li>
+        <li><strong>Voice input:</strong> Temporary audio data captured through your device's microphone for speech-to-text conversion. Speech recognition is performed locally on your device using Android's built-in Speech Recognition service. Audio recordings are <strong>not transmitted to our servers</strong> and are not retained after processing.</li>
+        <li><strong>Text for translation:</strong> Text you type or speak is sent to our translation backend for processing. Text is processed in real-time and is not stored on our servers after the translation request completes.</li>
         <li><strong>Translation history:</strong> Your translation history is stored <strong>locally on your device only</strong> and is never transmitted to our servers.</li>
         <li><strong>Usage analytics:</strong> Anonymous app performance data to improve user experience. No personal identifiers are collected.</li>
     </ul>
     
     <h2>2. How We Use Your Information</h2>
-    <p>Voice data is transmitted to third-party speech recognition services (Google Cloud Speech-to-Text API) solely for the purpose of real-time translation. We do not:</p>
+    <p>Text data is transmitted to third-party AI services (OpenAI and xAI) solely for the purpose of real-time translation and voice synthesis. We do not:</p>
     <ul>
-        <li>Retain voice recordings after processing</li>
-        <li>Sell or share your data with third parties</li>
+        <li>Retain text or voice data after processing</li>
+        <li>Sell or share your data with third parties for marketing purposes</li>
         <li>Use data for advertising purposes</li>
+        <li>Build user profiles from translation content</li>
     </ul>
     
-    <h2>3. Data Storage & Security</h2>
-    <p>All personal data (translation history, user preferences) is stored locally on your device using secure Android storage mechanisms. We do not operate backend servers for user data storage.</p>
+    <h2>3. Data Storage &amp; Security</h2>
+    <p>All personal data (translation history, user preferences) is stored locally on your device using secure Android storage mechanisms. We do not operate user databases or store personal information on backend servers. Translation requests are processed transiently and discarded after the response is delivered.</p>
     
     <h2>4. Third-Party Services</h2>
     <p>Dashka Translator Lite uses the following third-party services:</p>
     <ul>
-        <li>Google Translate API — for text translation</li>
-        <li>Google Text-to-Speech API — for voice output</li>
-        <li>Google Cloud Speech-to-Text API — for voice input</li>
+        <li><strong>OpenAI API</strong> — used for text translation between Polish and Russian. Text is sent to OpenAI's servers for processing. See <a href="https://openai.com/policies/privacy-policy" target="_blank">OpenAI Privacy Policy</a>.</li>
+        <li><strong>xAI Grok API</strong> — used for text-to-speech voice synthesis. Translated text is sent to xAI's servers to generate audio output. See <a href="https://x.ai/legal/privacy-policy" target="_blank">xAI Privacy Policy</a>.</li>
+        <li><strong>Android Speech Recognition</strong> — used for voice input. Speech-to-text is performed on-device by the Android operating system. Refer to your device manufacturer's privacy policy for details on Android system services.</li>
     </ul>
-    <p>These services are subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+    <p>These third-party services have their own privacy policies and data handling practices. We do not control how these providers process data submitted through their APIs.</p>
     
     <h2>5. Permissions</h2>
-    <p><strong>RECORD_AUDIO:</strong> This permission is required to enable voice input functionality. Audio is captured only when you actively press the microphone button and is processed in real-time. No audio is stored or retained.</p>
+    <p><strong>RECORD_AUDIO:</strong> This permission is required to enable voice input functionality. Audio is captured only when you actively press the microphone button and is processed in real-time by Android's on-device speech recognition. No audio is stored or transmitted to our servers.</p>
+    <p><strong>INTERNET:</strong> Required to send text to translation services and receive responses. No personal identifiers are included in requests.</p>
     
     <h2>6. Children's Privacy</h2>
-    <p>Dashka Translator Lite is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+    <p>Dashka Translator Lite is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us at the email below.</p>
     
     <h2>7. Your Rights</h2>
     <p>You have the right to:</p>
     <ul>
-        <li>Clear your local translation history at any time</li>
-        <li>Disable voice input features</li>
-        <li>Request information about data we hold about you</li>
+        <li>Clear your local translation history at any time through the app interface</li>
+        <li>Disable voice input features by denying the microphone permission</li>
+        <li>Uninstall the app to remove all locally stored data</li>
+        <li>Request information about data we hold about you (note: we do not maintain user accounts or databases)</li>
     </ul>
+    <p>Under GDPR (EU) and CCPA (California), you have additional rights including data access, correction, deletion, and portability. Since we do not store personal data on our servers, these rights are exercised by managing data directly on your device.</p>
     
-    <h2>8. Changes to This Policy</h2>
+    <h2>8. International Data Transfers</h2>
+    <p>Translation requests may be processed by servers located outside your country of residence (primarily in the United States, where OpenAI and xAI operate). By using Dashka Translator Lite, you consent to the international transfer of text submitted for translation.</p>
+    
+    <h2>9. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
     
-    <h2>9. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us:</p>
+    <h2>10. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us:</p>
     <p><strong>Email:</strong> <a href="mailto:hello@dashka.ai">hello@dashka.ai</a></p>
+    <p><strong>Developer:</strong> Dashka Engineering, a project by Solarpaletten GmbH.</p>
     
     <hr style="margin-top: 40px; border: none; border-top: 1px solid #eee;">
     <p style="font-size: 0.9em; color: #666;">© 2026 Dashka Engineering. All rights reserved.</p>
 </body>
-</html>[]
+</html>
