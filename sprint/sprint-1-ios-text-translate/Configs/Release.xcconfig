@@ -1,0 +1,9 @@
+// Release.xcconfig — Dashka iOS Sprint 1
+//
+// Production build configuration. Same shape as Debug; DASHKA_API_TOKEN
+// MUST be set via CI secret injection or a release-only Local.xcconfig
+// before App Store submission.
+
+DASHKA_BASE_URL    = https:/$()/dashka-chatpl-api.vercel.app
+DASHKA_API_TOKEN   =
+PARTNER_LANG       = PL

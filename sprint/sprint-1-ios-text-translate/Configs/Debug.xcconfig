@@ -1,0 +1,18 @@
+// Debug.xcconfig — Dashka iOS Sprint 1
+//
+// Build-time variables sourced into Info.plist via $(VAR_NAME). Mirrors
+// Android `gradle.properties` + `buildConfigField(...)` mechanism.
+//
+// The // in URLs must be escaped as /$()/ — Xcode treats // as a comment
+// start. This is an xcconfig quirk, not a Swift one.
+//
+// To set the API token locally without committing it, create a
+// `Configs/Local.xcconfig` (gitignored) that overrides DASHKA_API_TOKEN
+// and `#include "Local.xcconfig"` at the bottom of this file.
+
+DASHKA_BASE_URL    = https:/$()/dashka-chatpl-api.vercel.app
+DASHKA_API_TOKEN   =
+PARTNER_LANG       = PL
+
+// Optional local overrides (uncomment when Local.xcconfig exists):
+// #include? "Local.xcconfig"

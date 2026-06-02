@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ── Build-config bridge (xcconfig → runtime) ─────────────────── -->
+
+    <!-- Read at runtime via Bundle.main.dashkaBaseURL -->
+    <key>DASHKA_BASE_URL</key>
+    <string>$(DASHKA_BASE_URL)</string>
+
+    <!-- Read at runtime via Bundle.main.dashkaApiToken (REC-001) -->
+    <key>DASHKA_API_TOKEN</key>
+    <string>$(DASHKA_API_TOKEN)</string>
+
+    <!-- Read at runtime via Bundle.main.partnerLang -->
+    <key>PARTNER_LANG</key>
+    <string>$(PARTNER_LANG)</string>
+
+    <!-- ── Permission strings (foundation for Sprint 2A/3A) ──────────── -->
+    <!-- Not used in Sprint 1, but declared so the Info.plist doesn't need
+         a breaking edit when STT/audio arrive. Both usage-description keys
+         are required even before first prompt, otherwise iOS terminates
+         the app the moment the API is touched. -->
+
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Дашке нужен микрофон, чтобы услышать вашу речь и перевести её.</string>
+
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Дашка использует распознавание речи для перевода в реальном времени.</string>
+
+    <!-- ── App basics ────────────────────────────────────────────────── -->
+
+    <key>CFBundleName</key>
+    <string>Dashka</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>Dashka</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <key>UILaunchScreen</key>
+    <dict/>
+
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+</dict>
+</plist>

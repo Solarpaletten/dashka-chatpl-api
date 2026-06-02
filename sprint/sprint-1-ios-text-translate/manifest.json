@@ -1,0 +1,149 @@
+{
+  "sprint": "sprint-1-ios-text-translate",
+  "version": "1.0.0",
+  "platform": "swift-ios",
+  "target_pipeline": "solar-apply-swift-v1",
+  "parity_target": "android-dashka-sprint-1",
+  "created": "2026-05-30",
+  "author": {
+    "agent": "Claude",
+    "role": "engineer",
+    "team_protocol": "Solar Team v3.0"
+  },
+  "scope": {
+    "functional_in_scope": [
+      "text input pane",
+      "text output pane",
+      "direction toggle (RU ↔ partner)",
+      "translate button (POST /api/translate)",
+      "error banner + dismiss",
+      "clear button",
+      "REC-001 X-Dashka-Token header injection",
+      "REC-004 10s request timeout",
+      "REC-005 canonical lang codes on wire"
+    ],
+    "foundations_in_scope": [
+      "MicState enum (idle-only in Sprint 1)",
+      "TtsState enum (idle-only in Sprint 1)",
+      "TtsVoice enum + PaneState.voice field",
+      "PaneState.autoplayEnabled field",
+      "ShareMode enum",
+      "HistoryEntry struct (Codable, no persistence)",
+      "HistorySnapshot struct (Codable, no persistence)",
+      "DashkaApi.tts(_:) declared but Sprint-3A-wired"
+    ],
+    "explicitly_out_of_scope": [
+      "SFSpeechRecognizer / mic flow",
+      "AVAudioPlayer / TTS playback",
+      "TtsCache",
+      "UserDefaults voice/autoplay persistence",
+      "HistoryStorage / FileManager writes",
+      "Voice picker UI",
+      "Autoplay switch UI",
+      "Share popover / sheet",
+      "History bottom sheet",
+      "Copy / paste handlers",
+      "FeatureFlags / Tier gating"
+    ]
+  },
+  "architecture_constraints_honored": {
+    "ios_deployment_target": "17.0",
+    "history_storage": "deferred to Sprint 4C — only Codable structs in Sprint 1",
+    "voice_selection": "one global voice (PaneState.voice), no per-direction split",
+    "autoplay_default": false,
+    "no_swiftdata": true,
+    "no_combine": true,
+    "uses_observable_macro": true,
+    "uses_async_await": true,
+    "uses_main_actor_for_vm": true,
+    "uses_actor_for_api": true
+  },
+  "files": [
+    { "path": "Dashka/DashkaApp.swift",                                      "kind": "entry",            "lines_approx": 14 },
+    { "path": "Dashka/AppContainer.swift",                                   "kind": "di",               "lines_approx": 80 },
+    { "path": "Dashka/Domain/Model/LangCode.swift",                          "kind": "domain-model",     "lines_approx": 110 },
+    { "path": "Dashka/Domain/Model/Direction.swift",                         "kind": "domain-model",     "lines_approx": 24 },
+    { "path": "Dashka/Domain/Model/TtsVoice.swift",                          "kind": "domain-model",     "lines_approx": 50 },
+    { "path": "Dashka/Domain/Model/MicState.swift",                          "kind": "domain-model",     "lines_approx": 30 },
+    { "path": "Dashka/Domain/Model/TtsState.swift",                          "kind": "domain-model",     "lines_approx": 22 },
+    { "path": "Dashka/Domain/Model/ShareMode.swift",                         "kind": "domain-model",     "lines_approx": 20 },
+    { "path": "Dashka/Domain/Model/PaneState.swift",                         "kind": "domain-model",     "lines_approx": 30 },
+    { "path": "Dashka/Domain/Model/TranslationResult.swift",                 "kind": "domain-model",     "lines_approx": 14 },
+    { "path": "Dashka/Domain/Repository/TranslationRepository.swift",        "kind": "domain-protocol",  "lines_approx": 18 },
+    { "path": "Dashka/Domain/UseCase/TranslateUseCase.swift",                "kind": "domain-usecase",   "lines_approx": 22 },
+    { "path": "Dashka/Data/Api/DashkaApi.swift",                             "kind": "data-api",         "lines_approx": 145 },
+    { "path": "Dashka/Data/Api/DashkaResult.swift",                          "kind": "data-result",      "lines_approx": 35 },
+    { "path": "Dashka/Data/Api/DTO/TranslateRequest.swift",                  "kind": "data-dto",         "lines_approx": 22 },
+    { "path": "Dashka/Data/Api/DTO/TranslateResponse.swift",                 "kind": "data-dto",         "lines_approx": 38 },
+    { "path": "Dashka/Data/Api/DTO/HealthResponse.swift",                    "kind": "data-dto",         "lines_approx": 8 },
+    { "path": "Dashka/Data/Api/DTO/ErrorEnvelope.swift",                     "kind": "data-dto",         "lines_approx": 14 },
+    { "path": "Dashka/Data/Repository/TranslationRepositoryImpl.swift",     "kind": "data-impl",        "lines_approx": 60 },
+    { "path": "Dashka/Data/History/HistoryEntry.swift",                      "kind": "foundation",       "lines_approx": 42 },
+    { "path": "Dashka/Data/History/HistorySnapshot.swift",                   "kind": "foundation",       "lines_approx": 32 },
+    { "path": "Dashka/Presentation/Theme/DashkaColors.swift",                "kind": "ui-theme",         "lines_approx": 24 },
+    { "path": "Dashka/Presentation/Theme/DashkaTheme.swift",                 "kind": "ui-theme",         "lines_approx": 18 },
+    { "path": "Dashka/Presentation/Translator/TranslatorIntent.swift",      "kind": "ui-intent",        "lines_approx": 26 },
+    { "path": "Dashka/Presentation/Translator/TranslatorViewModel.swift",  "kind": "ui-viewmodel",     "lines_approx": 150 },
+    { "path": "Dashka/Presentation/Translator/TranslatorScreen.swift",     "kind": "ui-screen",        "lines_approx": 170 },
+    { "path": "Dashka/Resources/Info.plist",                                 "kind": "config",           "lines_approx": 40 },
+    { "path": "Configs/Debug.xcconfig",                                      "kind": "config",           "lines_approx": 18 },
+    { "path": "Configs/Release.xcconfig",                                    "kind": "config",           "lines_approx": 10 },
+    { "path": "README.md",                                                   "kind": "doc",              "lines_approx": 170 }
+  ],
+  "rec_contract_compliance": {
+    "REC-001": {
+      "where": "Dashka/Data/Api/DashkaApi.swift → buildRequest(path:method:body:)",
+      "behavior": "X-Dashka-Token header injected from Bundle.main.dashkaApiToken when non-nil/non-empty"
+    },
+    "REC-002": {
+      "status": "deferred to Sprint 3A (TTS lang map)",
+      "note": "LangCode.speechLocale is BCP-47 for STT, not the TTS ISO 639-1 lowercase code"
+    },
+    "REC-003": {
+      "status": "deferred",
+      "note": "Backend enforces 5000-char cap; Sprint 1 client does not pre-validate length. Add in Sprint 2C continuous mode where long buffers become possible."
+    },
+    "REC-004": {
+      "where": "Dashka/Data/Api/DashkaApi.swift → buildRequest(...) sets timeoutInterval = 10.0",
+      "behavior": "URLSession enforces per-request timeout"
+    },
+    "REC-005": {
+      "where": "Dashka/Data/Api/DTO/TranslateRequest.swift",
+      "behavior": "LangCode.rawValue is canonical uppercase (RU/PL/...) — sent verbatim; backend ALLOWED_LANGS will validate"
+    }
+  },
+  "audit_chain": [
+    { "agent": "Claude", "voice": "full",     "stage": "produce"     },
+    { "agent": "Kimi",   "voice": "single",   "stage": "review"      },
+    { "agent": "Solana", "voice": "single",   "stage": "review"      },
+    { "agent": "Qwen",   "voice": "single",   "stage": "integration", "model": "Qwen 2.5 72B" },
+    { "agent": "Dashka", "voice": "merge",    "stage": "verdict"     },
+    { "agent": "Leanid", "voice": "decision", "stage": "merge/reject" }
+  ],
+  "council_focus_hints": {
+    "Kimi": [
+      "Cancellable Task pattern in TranslatorViewModel.performTranslation — Task.isCancelled gate after await prevents stale-write race",
+      "DashkaApi error mapping: NSError domains are the contract — TranslationRepositoryImpl.mapToDashkaError(_:) must cover every domain DashkaApi.map(urlError:) produces"
+    ],
+    "Solana": [
+      "PaneState forward-compat fields are declared but NOT written by Sprint 1 VM — verify no Sprint-2-4 intent leaks into TranslatorIntent.swift",
+      "Info.plist permission strings are pre-declared (mic/speech) — verify no code path actually triggers prompts in Sprint 1"
+    ],
+    "Qwen": [
+      "Full Sprint-1-vs-Android parity: Direction.toggled(), error message strings, last-write-wins translation, source/target derivation from direction",
+      "REC-001 / REC-004 / REC-005 implementation locations vs declared in manifest"
+    ]
+  },
+  "escalation_triggers_not_hit": [
+    "no architecture change",
+    "no migration",
+    "no data-loss risk (no persistence writes in Sprint 1)",
+    "no security-sensitive change",
+    "rollback is safe (all NEW files, no PATCH)"
+  ],
+  "delivery_format": {
+    "archive": "sprint-1-ios-text-translate.tar.gz",
+    "installer": "solar-apply-swift-v1",
+    "expected_audit_result": "all NEW, zero PATCH, zero IDENTICAL"
+  }
+}
